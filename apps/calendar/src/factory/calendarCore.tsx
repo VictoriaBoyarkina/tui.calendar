@@ -393,6 +393,7 @@ export default abstract class CalendarCore
    *   },
    * ]);
    */
+
   createEvents(events: EventObject[]) {
     const { createEvents } = this.getStoreDispatchers('calendar');
 
