@@ -13,7 +13,6 @@ import type { CalendarData, EventObject } from '@t/events';
 import type { CalendarColor, CalendarInfo } from '@t/options';
 import type { CalendarState, CalendarStore, SetState } from '@t/store';
 import initialCalendars from '@src/constants/initialCalendar';
-import initialEvents from '@src/constants/initialEvents';
 import eventModels from '@src/constants/initialEvents';
 
 export type CalendarSlice = { calendar: CalendarData };

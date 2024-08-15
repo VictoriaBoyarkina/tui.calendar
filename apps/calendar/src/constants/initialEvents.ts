@@ -141,6 +141,8 @@ const initialEvents: EventObject[] = [
   },
 ];
 
+console.log(initialEvents)
+
 const eventModels = initialEvents.map(event => new EventModel(event));
 
 export default eventModels
