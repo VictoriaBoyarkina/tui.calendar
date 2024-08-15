@@ -44,7 +44,7 @@ export function Layout({
   children,
   width,
   height,
-  className = '',
+  className = 'vika-layout',
   autoAdjustPanels = false,
 }: PropsWithChildren<Props>) {
   const { backgroundColor } = useTheme(commonThemeSelector);
