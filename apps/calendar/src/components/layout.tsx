@@ -83,7 +83,7 @@ export function Layout({
       <div
         ref={containerRefCallback}
         className={layoutClassName}
-        style={{ ...getLayoutStylesFromInfo(width, height), backgroundColor }}
+        style={{ ...getLayoutStylesFromInfo(width, height), backgroundColor: 'red' }}
       >
         {container ? children : null}
       </div>
