@@ -9833,7 +9833,7 @@ const DEFAULT_COMMON_THEME = {
     color: "#ff4040"
   },
   saturday: {
-    color: "#333"
+    color: "#ff4040"
   },
   dayName: {
     color: "#333"

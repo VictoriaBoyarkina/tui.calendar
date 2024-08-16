@@ -9840,7 +9840,7 @@ var __publicField = (obj, key, value) => {
       color: "#ff4040"
     },
     saturday: {
-      color: "#333"
+      color: "#ff4040"
     },
     dayName: {
       color: "#333"

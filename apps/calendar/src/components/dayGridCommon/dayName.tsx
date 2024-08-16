@@ -52,7 +52,7 @@ function getWeekDayNameColor({
     return theme.week?.pastDay.color;
   }
   if (isSaturday(day)) {
-    return theme.common.holiday.color;
+    return theme.common.saturday.color;
   }
   if (isToday) {
     return theme.week?.today.color;
