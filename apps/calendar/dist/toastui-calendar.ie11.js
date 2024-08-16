@@ -14966,6 +14966,7 @@ function calendar_toPrimitive(t, r) { if ("object" != calendar_typeof(t) || !t) 
 
 
 
+
 function calendar_toConsumableArray(r) { return calendar_arrayWithoutHoles(r) || calendar_iterableToArray(r) || calendar_unsupportedIterableToArray(r) || calendar_nonIterableSpread(); }
 function calendar_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function calendar_unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return calendar_arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? calendar_arrayLikeToArray(r, a) : void 0; } }
@@ -14977,10 +14978,10 @@ function calendar_arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r
 
 
 function createCalendarSlice() {
-  var calendars = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialCalendar;
+  var calendars = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   return {
     calendar: {
-      calendars: calendars,
+      calendars: [].concat(calendar_toConsumableArray(calendars), calendar_toConsumableArray(initialCalendar)),
       events: createEventCollection.apply(void 0, calendar_toConsumableArray(constants_initialEvents)),
       idsOfDay: {}
     }
@@ -21391,7 +21392,7 @@ function Layout(_ref) {
     width = _ref.width,
     height = _ref.height,
     _ref$className = _ref.className,
-    className = _ref$className === void 0 ? 'vika-layout' : _ref$className,
+    className = _ref$className === void 0 ? '' : _ref$className,
     _ref$autoAdjustPanels = _ref.autoAdjustPanels,
     autoAdjustPanels = _ref$autoAdjustPanels === void 0 ? false : _ref$autoAdjustPanels;
   var _useTheme = useTheme(commonThemeSelector),
@@ -21434,7 +21435,7 @@ function Layout(_ref) {
     ref: containerRefCallback,
     className: layoutClassName,
     style: layout_objectSpread(layout_objectSpread({}, getLayoutStylesFromInfo(width, height)), {}, {
-      backgroundColor: 'red'
+      backgroundColor: backgroundColor
     })
   }, container ? children : null), _(EventFormPopup, null), _(EventDetailPopup, null), _(SeeMoreEventsPopup, null), _(PopupOverlay, null));
 }

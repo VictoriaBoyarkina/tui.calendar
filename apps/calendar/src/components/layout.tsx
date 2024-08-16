@@ -1,7 +1,6 @@
 import type { ComponentChildren, ComponentProps } from 'preact';
 import { h, toChildArray } from 'preact';
 import { useLayoutEffect, useMemo } from 'preact/hooks';
-
 import type { Panel } from '@src/components/panel';
 import { EventDetailPopup } from '@src/components/popup/eventDetailPopup';
 import { EventFormPopup } from '@src/components/popup/eventFormPopup';
@@ -44,7 +43,7 @@ export function Layout({
   children,
   width,
   height,
-  className = 'vika-layout',
+  className = '',
   autoAdjustPanels = false,
 }: PropsWithChildren<Props>) {
   const { backgroundColor } = useTheme(commonThemeSelector);
@@ -83,7 +82,7 @@ export function Layout({
       <div
         ref={containerRefCallback}
         className={layoutClassName}
-        style={{ ...getLayoutStylesFromInfo(width, height), backgroundColor: 'red' }}
+        style={{ ...getLayoutStylesFromInfo(width, height), backgroundColor }}
       >
         {container ? children : null}
       </div>

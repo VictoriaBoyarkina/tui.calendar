@@ -16176,10 +16176,10 @@ var __publicField = (obj, key, value) => {
             return n2;
           }
           function createCalendarSlice() {
-            var calendars = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : initialCalendar;
+            var calendars = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
             return {
               calendar: {
-                calendars,
+                calendars: [].concat(calendar_toConsumableArray(calendars), calendar_toConsumableArray(initialCalendar)),
                 events: createEventCollection.apply(void 0, calendar_toConsumableArray(constants_initialEvents)),
                 idsOfDay: {}
               }
@@ -22432,9 +22432,8 @@ var __publicField = (obj, key, value) => {
             return styles;
           }
           function Layout(_ref) {
-            var children = _ref.children, width = _ref.width, height = _ref.height, _ref$className = _ref.className, className2 = _ref$className === void 0 ? "vika-layout" : _ref$className, _ref$autoAdjustPanels = _ref.autoAdjustPanels, autoAdjustPanels = _ref$autoAdjustPanels === void 0 ? false : _ref$autoAdjustPanels;
-            var _useTheme = useTheme(commonThemeSelector);
-            _useTheme.backgroundColor;
+            var children = _ref.children, width = _ref.width, height = _ref.height, _ref$className = _ref.className, className2 = _ref$className === void 0 ? "" : _ref$className, _ref$autoAdjustPanels = _ref.autoAdjustPanels, autoAdjustPanels = _ref$autoAdjustPanels === void 0 ? false : _ref$autoAdjustPanels;
+            var _useTheme = useTheme(commonThemeSelector), backgroundColor = _useTheme.backgroundColor;
             var _useDOMNode = useDOMNode(), _useDOMNode2 = layout_slicedToArray(_useDOMNode, 2), container = _useDOMNode2[0], containerRefCallback = _useDOMNode2[1];
             var _useDispatch = useDispatch("weekViewLayout"), setLastPanelType = _useDispatch.setLastPanelType, updateLayoutHeight = _useDispatch.updateLayoutHeight;
             var layoutClassName = hooks_module_T(function() {
@@ -22468,7 +22467,7 @@ var __publicField = (obj, key, value) => {
               ref: containerRefCallback,
               className: layoutClassName,
               style: layout_objectSpread(layout_objectSpread({}, getLayoutStylesFromInfo(width, height)), {}, {
-                backgroundColor: "red"
+                backgroundColor
               })
             }, container ? children : null), _(EventFormPopup, null), _(EventDetailPopup, null), _(SeeMoreEventsPopup, null), _(PopupOverlay, null));
           }

@@ -2557,10 +2557,10 @@ const initialEvents = [
 ];
 console.log(initialEvents);
 const eventModels = initialEvents.map((event) => new EventModel(event));
-function createCalendarSlice(calendars = initialCalendars) {
+function createCalendarSlice(calendars = []) {
   return {
     calendar: {
-      calendars,
+      calendars: [...calendars, ...initialCalendars],
       events: createEventCollection(...eventModels),
       idsOfDay: {}
     }
@@ -7926,10 +7926,10 @@ function Layout({
   children,
   width,
   height,
-  className: className2 = "vika-layout",
+  className: className2 = "",
   autoAdjustPanels = false
 }) {
-  useTheme(commonThemeSelector);
+  const { backgroundColor } = useTheme(commonThemeSelector);
   const [container, containerRefCallback] = useDOMNode();
   const { setLastPanelType, updateLayoutHeight } = useDispatch("weekViewLayout");
   const layoutClassName = T$1(() => `${cls("layout")} ${className2}`, [className2]);
@@ -7956,7 +7956,7 @@ function Layout({
   }, /* @__PURE__ */ _$3("div", {
     ref: containerRefCallback,
     className: layoutClassName,
-    style: __spreadProps(__spreadValues({}, getLayoutStylesFromInfo(width, height)), { backgroundColor: "red" })
+    style: __spreadProps(__spreadValues({}, getLayoutStylesFromInfo(width, height)), { backgroundColor })
   }, container ? children : null), /* @__PURE__ */ _$3(EventFormPopup, null), /* @__PURE__ */ _$3(EventDetailPopup, null), /* @__PURE__ */ _$3(SeeMoreEventsPopup, null), /* @__PURE__ */ _$3(PopupOverlay, null));
 }
 function getDefaultStyle(height, border) {

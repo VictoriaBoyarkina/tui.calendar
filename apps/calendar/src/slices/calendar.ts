@@ -29,10 +29,10 @@ export type CalendarDispatchers = {
   setCalendarVisibility: (calendarIds: string[], isVisible: boolean) => void;
 };
 
-export function createCalendarSlice(calendars: CalendarInfo[] = initialCalendars): CalendarSlice {
+export function createCalendarSlice(calendars: CalendarInfo[] = []): CalendarSlice {
   return {
     calendar: {
-      calendars,
+      calendars: [...calendars, ...initialCalendars],
       events: createEventCollection(...eventModels),
       idsOfDay: {},
     },

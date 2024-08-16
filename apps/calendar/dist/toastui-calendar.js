@@ -5617,10 +5617,10 @@ const eventModels = initialEvents.map(event => new EventModel(event));
 
 
 function createCalendarSlice() {
-  let calendars = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialCalendar;
+  let calendars = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   return {
     calendar: {
-      calendars,
+      calendars: [...calendars, ...initialCalendar],
       events: createEventCollection(...constants_initialEvents),
       idsOfDay: {}
     }
@@ -11089,7 +11089,7 @@ function Layout(_ref) {
     children,
     width,
     height,
-    className = 'vika-layout',
+    className = '',
     autoAdjustPanels = false
   } = _ref;
   const {
@@ -11126,7 +11126,7 @@ function Layout(_ref) {
     className: layoutClassName,
     style: {
       ...getLayoutStylesFromInfo(width, height),
-      backgroundColor: 'red'
+      backgroundColor
     }
   }, container ? children : null), _(EventFormPopup, null), _(EventDetailPopup, null), _(SeeMoreEventsPopup, null), _(PopupOverlay, null));
 }
