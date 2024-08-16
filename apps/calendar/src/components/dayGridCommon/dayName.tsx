@@ -106,6 +106,7 @@ export function DayName({ dayName, style, type, theme }: Props) {
         onClick={handleClick}
         data-testid={`dayName-${type}-${getDayName(day)}`}
       >
+        {dayName}
         <Template template={templateType} param={dayName} />
       </span>
     </div>

@@ -4411,7 +4411,7 @@ function min(d1, d2) {
 }
 function isNotHolyday(d1, daysList) {
   const date = `${d1.getDate()}.${d1.getMonth()}.${d1.getFullYear()}`;
-  return daysList.includes(date);
+  return daysList.some(d => d === date);
 }
 
 /**
@@ -6920,7 +6920,7 @@ function DayName(_ref3) {
     },
     onClick: handleClick,
     "data-testid": `dayName-${type}-${getDayName(day)}`
-  }, _(Template, {
+  }, dayName, _(Template, {
     template: templateType,
     param: dayName
   })));

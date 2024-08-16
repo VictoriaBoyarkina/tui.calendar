@@ -259,7 +259,7 @@ export function min(d1: TZDate, d2: TZDate): TZDate {
 
 export function isNotHolyday(d1: TZDate, daysList: string[]): boolean {
   const date = `${d1.getDate()}.${d1.getMonth()}.${d1.getFullYear()}`;
-  return daysList.includes(date);
+  return daysList.some((d) => d === date);
 }
 
 /**

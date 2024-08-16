@@ -13349,8 +13349,6 @@ function datetime_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-
-
 var Day = /*#__PURE__*/function (Day) {
   Day[Day["SUN"] = 0] = "SUN";
   Day[Day["MON"] = 1] = "MON";
@@ -13560,7 +13558,9 @@ function min(d1, d2) {
 }
 function isNotHolyday(d1, daysList) {
   var date = "".concat(d1.getDate(), ".").concat(d1.getMonth(), ".").concat(d1.getFullYear());
-  return daysList.includes(date);
+  return daysList.some(function (d) {
+    return d === date;
+  });
 }
 
 /**
@@ -16495,7 +16495,7 @@ function DayName(_ref3) {
     },
     onClick: handleClick,
     "data-testid": "dayName-".concat(type, "-").concat(getDayName(day))
-  }, _(Template, {
+  }, dayName, _(Template, {
     template: templateType,
     param: dayName
   })));

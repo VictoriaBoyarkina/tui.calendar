@@ -15075,7 +15075,9 @@ var __publicField = (obj, key, value) => {
           }
           function isNotHolyday(d1, daysList) {
             var date2 = "".concat(d1.getDate(), ".").concat(d1.getMonth(), ".").concat(d1.getFullYear());
-            return daysList.includes(date2);
+            return daysList.some(function(d2) {
+              return d2 === date2;
+            });
           }
           function parse(str) {
             var fixMonth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : -1;
@@ -17675,7 +17677,7 @@ var __publicField = (obj, key, value) => {
               },
               onClick: handleClick,
               "data-testid": "dayName-".concat(type, "-").concat(getDayName(day))
-            }, _(Template, {
+            }, dayName, _(Template, {
               template: templateType,
               param: dayName
             })));

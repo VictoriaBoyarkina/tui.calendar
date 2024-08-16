@@ -6959,7 +6959,7 @@ function min(d1, d2) {
 }
 function isNotHolyday(d1, daysList) {
   const date2 = `${d1.getDate()}.${d1.getMonth()}.${d1.getFullYear()}`;
-  return daysList.includes(date2);
+  return daysList.some((d2) => d2 === date2);
 }
 function parse(str, fixMonth = -1) {
   const matches = str.match(dateFormatRx);
@@ -9815,7 +9815,7 @@ function DayName({ dayName, style, type, theme }) {
     style: { color },
     onClick: handleClick,
     "data-testid": `dayName-${type}-${getDayName(day)}`
-  }, /* @__PURE__ */ _$3(Template, {
+  }, dayName, /* @__PURE__ */ _$3(Template, {
     template: templateType,
     param: dayName
   })));
