@@ -257,6 +257,11 @@ export function min(d1: TZDate, d2: TZDate): TZDate {
   return compare(d1, d2) === -1 ? d1 : d2;
 }
 
+export function isNotHolyday(d1: TZDate, daysList: TZDate[]): boolean {
+  console.log(d1)
+  return daysList.includes(d1);
+}
+
 /**
  * Convert date string to date object.
  * Only listed below formats available.
@@ -319,6 +324,7 @@ export function toEndOfDay(date?: number | TZDate): TZDate {
 export function isWeekend(day: Day): boolean {
   return day === Day.SUN || day === Day.SAT;
 }
+
 
 export function isSunday(day: Day): boolean {
   return day === Day.SUN;

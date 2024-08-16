@@ -15073,6 +15073,10 @@ var __publicField = (obj, key, value) => {
           function min(d1, d2) {
             return compare(d1, d2) === -1 ? d1 : d2;
           }
+          function isNotHolyday(d1, daysList) {
+            console.log(d1);
+            return daysList.includes(d1);
+          }
           function parse(str) {
             var fixMonth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : -1;
             var matches = str.match(dateFormatRx);
@@ -17505,6 +17509,8 @@ var __publicField = (obj, key, value) => {
             }, [primaryTimezoneName, tzConverter]);
             return [primaryTimezoneName, getNow];
           }
+          var workingDaysList = [];
+          var constants_workingDaysList = workingDaysList;
           function dayName_typeof(o2) {
             "@babel/helpers - typeof";
             return dayName_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o3) {
@@ -17588,8 +17594,13 @@ var __publicField = (obj, key, value) => {
           function getWeekDayNameColor(_ref) {
             var dayName = _ref.dayName, theme = _ref.theme, today = _ref.today;
             var day = dayName.day, dateInstance = dayName.dateInstance;
+            console.log(dayName);
             var isToday = isSameDate(today, dateInstance);
             var isPastDay = !isToday && dateInstance < today;
+            var isWeekday = isNotHolyday(dateInstance, constants_workingDaysList);
+            if (isWeekday) {
+              return theme.common.dayName.color;
+            }
             if (isSunday(day)) {
               return theme.common.holiday.color;
             }

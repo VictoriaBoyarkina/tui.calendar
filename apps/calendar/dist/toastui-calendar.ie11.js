@@ -13349,6 +13349,8 @@ function datetime_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
+
 var Day = /*#__PURE__*/function (Day) {
   Day[Day["SUN"] = 0] = "SUN";
   Day[Day["MON"] = 1] = "MON";
@@ -13555,6 +13557,10 @@ function max(d1, d2) {
 }
 function min(d1, d2) {
   return compare(d1, d2) === -1 ? d1 : d2;
+}
+function isNotHolyday(d1, daysList) {
+  console.log(d1);
+  return daysList.includes(d1);
 }
 
 /**
@@ -16353,6 +16359,9 @@ function usePrimaryTimezone() {
   }, [primaryTimezoneName, tzConverter]);
   return [primaryTimezoneName, getNow];
 }
+;// CONCATENATED MODULE: ./src/constants/workingDaysList.ts
+var workingDaysList = [];
+/* harmony default export */ var constants_workingDaysList = (workingDaysList);
 ;// CONCATENATED MODULE: ./src/components/dayGridCommon/dayName.tsx
 function dayName_typeof(o) { "@babel/helpers - typeof"; return dayName_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, dayName_typeof(o); }
 
@@ -16389,6 +16398,7 @@ function dayName_arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+
 function isWeekDayName(type, dayName) {
   return type === 'week';
 }
@@ -16398,8 +16408,13 @@ function getWeekDayNameColor(_ref) {
     today = _ref.today;
   var day = dayName.day,
     dateInstance = dayName.dateInstance;
+  console.log(dayName);
   var isToday = isSameDate(today, dateInstance);
   var isPastDay = !isToday && dateInstance < today;
+  var isWeekday = isNotHolyday(dateInstance, constants_workingDaysList);
+  if (isWeekday) {
+    return theme.common.dayName.color;
+  }
   if (isSunday(day)) {
     return theme.common.holiday.color;
   }

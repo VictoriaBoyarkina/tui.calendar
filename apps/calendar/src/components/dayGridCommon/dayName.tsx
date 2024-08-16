@@ -8,10 +8,11 @@ import { getDayName } from '@src/helpers/dayName';
 import { usePrimaryTimezone } from '@src/hooks/timezone/usePrimaryTimezone';
 import type { TemplateName } from '@src/template/default';
 import type TZDate from '@src/time/date';
-import { isSameDate, isSaturday, isSunday, isWeekend, toFormat } from '@src/time/datetime';
+import { isNotHolyday, isSameDate, isSaturday, isSunday, isWeekend, toFormat } from '@src/time/datetime';
 
 import type { CalendarViewType, StyleProp } from '@t/components/common';
 import type { TemplateMonthDayName, TemplateWeekDayName } from '@t/template';
+import workingDaysList from '@src/constants/workingDaysList';
 
 interface Props {
   type: CalendarViewType;
@@ -37,9 +38,14 @@ function getWeekDayNameColor({
   today: TZDate;
 }) {
   const { day, dateInstance } = dayName;
+  console.log(dayName);
   const isToday = isSameDate(today, dateInstance);
   const isPastDay = !isToday && dateInstance < today;
+  const isWeekday = isNotHolyday(dateInstance, workingDaysList);
 
+  if (isWeekday) {
+    return theme.common.dayName.color;
+  }
   if (isSunday(day)) {
     return theme.common.holiday.color;
   }

@@ -6964,6 +6964,10 @@ var __publicField = (obj, key, value) => {
   function min(d1, d2) {
     return compare(d1, d2) === -1 ? d1 : d2;
   }
+  function isNotHolyday(d1, daysList) {
+    console.log(d1);
+    return daysList.includes(d1);
+  }
   function parse(str, fixMonth = -1) {
     const matches = str.match(dateFormatRx);
     let separator;
@@ -9736,6 +9740,7 @@ var __publicField = (obj, key, value) => {
     );
     return [primaryTimezoneName, getNow];
   }
+  const workingDaysList = [];
   function isWeekDayName(type, dayName) {
     return type === "week";
   }
@@ -9746,8 +9751,13 @@ var __publicField = (obj, key, value) => {
   }) {
     var _a, _b;
     const { day, dateInstance } = dayName;
+    console.log(dayName);
     const isToday = isSameDate(today, dateInstance);
     const isPastDay = !isToday && dateInstance < today;
+    const isWeekday = isNotHolyday(dateInstance, workingDaysList);
+    if (isWeekday) {
+      return theme.common.dayName.color;
+    }
     if (isSunday(day)) {
       return theme.common.holiday.color;
     }
