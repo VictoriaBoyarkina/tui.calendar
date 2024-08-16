@@ -15974,9 +15974,9 @@ var __publicField = (obj, key, value) => {
           var constants_calendarId = calendarId;
           var initialCalendars = [{
             id: constants_calendarId,
-            name: "PublicHolidays",
-            backgroundColor: "#f30b0b",
-            borderColor: "#f30b0b"
+            name: "Public Holidays",
+            backgroundColor: "#ff4040",
+            borderColor: "#ff4040"
           }];
           var initialCalendar = initialCalendars;
           var initialEvents = [{
@@ -17525,7 +17525,7 @@ var __publicField = (obj, key, value) => {
             }, [primaryTimezoneName, tzConverter]);
             return [primaryTimezoneName, getNow];
           }
-          var workingDaysList = ["27.04.2024", "2.04.2024", "28.12.2024"];
+          var workingDaysList = ["27.4.2024", "2.15.2024", "28.12.2024"];
           var constants_workingDaysList = workingDaysList;
           function dayName_typeof(o2) {
             "@babel/helpers - typeof";

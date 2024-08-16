@@ -5488,9 +5488,9 @@ const calendarId = esm_browser_v4();
 
 const initialCalendars = [{
   id: constants_calendarId,
-  name: 'PublicHolidays',
-  backgroundColor: '#f30b0b',
-  borderColor: '#f30b0b'
+  name: 'Public Holidays',
+  backgroundColor: '#ff4040',
+  borderColor: '#ff4040'
 }];
 /* harmony default export */ var initialCalendar = (initialCalendars);
 ;// CONCATENATED MODULE: ./src/constants/initialEvents.ts
@@ -6819,7 +6819,7 @@ function usePrimaryTimezone() {
   return [primaryTimezoneName, getNow];
 }
 ;// CONCATENATED MODULE: ./src/constants/workingDaysList.ts
-const workingDaysList = ['27.04.2024', '2.04.2024', '28.12.2024'];
+const workingDaysList = ['27.4.2024', '2.15.2024', '28.12.2024'];
 /* harmony default export */ var constants_workingDaysList = (workingDaysList);
 ;// CONCATENATED MODULE: ./src/components/dayGridCommon/dayName.tsx
 

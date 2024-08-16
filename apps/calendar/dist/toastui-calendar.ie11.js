@@ -14809,9 +14809,9 @@ var calendarId = esm_browser_v4();
 
 var initialCalendars = [{
   id: constants_calendarId,
-  name: 'PublicHolidays',
-  backgroundColor: '#f30b0b',
-  borderColor: '#f30b0b'
+  name: 'Public Holidays',
+  backgroundColor: '#ff4040',
+  borderColor: '#ff4040'
 }];
 /* harmony default export */ var initialCalendar = (initialCalendars);
 ;// CONCATENATED MODULE: ./src/constants/initialEvents.ts
@@ -16376,7 +16376,7 @@ function usePrimaryTimezone() {
   return [primaryTimezoneName, getNow];
 }
 ;// CONCATENATED MODULE: ./src/constants/workingDaysList.ts
-var workingDaysList = ['27.04.2024', '2.04.2024', '28.12.2024'];
+var workingDaysList = ['27.4.2024', '2.15.2024', '28.12.2024'];
 /* harmony default export */ var constants_workingDaysList = (workingDaysList);
 ;// CONCATENATED MODULE: ./src/components/dayGridCommon/dayName.tsx
 function dayName_typeof(o) { "@babel/helpers - typeof"; return dayName_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, dayName_typeof(o); }

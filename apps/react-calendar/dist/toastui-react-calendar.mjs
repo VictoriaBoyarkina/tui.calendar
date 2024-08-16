@@ -7625,9 +7625,9 @@ const calendarId = v4();
 const initialCalendars = [
   {
     id: calendarId,
-    name: "PublicHolidays",
-    backgroundColor: "#f30b0b",
-    borderColor: "#f30b0b"
+    name: "Public Holidays",
+    backgroundColor: "#ff4040",
+    borderColor: "#ff4040"
   }
 ];
 const initialEvents = [
@@ -9751,7 +9751,7 @@ function usePrimaryTimezone() {
   );
   return [primaryTimezoneName, getNow];
 }
-const workingDaysList = ["27.04.2024", "2.04.2024", "28.12.2024"];
+const workingDaysList = ["27.4.2024", "2.15.2024", "28.12.2024"];
 function isWeekDayName(type, dayName) {
   return type === "week";
 }
