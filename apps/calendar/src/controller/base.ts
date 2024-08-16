@@ -15,8 +15,6 @@ import type { CalendarInfo } from '@t/options';
 export function createEventCollection<T extends EventModel | EventUIModel>(...initItems: T[]) {
   const collection = new Collection<T>((event) => event.cid());
 
-  console.log(collection)
-
   if (initItems.length) {
     collection.add(...initItems);
   }

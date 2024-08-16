@@ -1909,8 +1909,8 @@ function collidesWith({
   }
   return hasCollision(start, end, targetStart, targetEnd);
 }
-function isSameEvent(event, eventId, calendarId) {
-  return event.id === eventId && event.calendarId === calendarId;
+function isSameEvent(event, eventId, calendarId2) {
+  return event.id === eventId && event.calendarId === calendarId2;
 }
 function idGenerator() {
   let id = 0;
@@ -1961,7 +1961,7 @@ class EventModel {
   }
   init({
     id = "",
-    calendarId = "",
+    calendarId: calendarId2 = "",
     title = "",
     body = "",
     isAllday: isAllday2 = false,
@@ -1988,7 +1988,7 @@ class EventModel {
     raw = null
   } = {}) {
     this.id = id;
-    this.calendarId = calendarId;
+    this.calendarId = calendarId2;
     this.title = title;
     this.body = body;
     this.isAllday = category === "allday" ? true : isAllday2;
@@ -2302,7 +2302,6 @@ class Collection {
 }
 function createEventCollection(...initItems) {
   const collection = new Collection((event) => event.cid());
-  console.log(collection);
   if (initItems.length) {
     collection.add(...initItems);
   }
@@ -2350,9 +2349,9 @@ function createEvent(calendarData, eventData) {
 function createEvents(calendarData, events = []) {
   return events.map((eventData) => createEvent(calendarData, eventData));
 }
-function updateEvent(calendarData, eventId, calendarId, eventData) {
+function updateEvent(calendarData, eventId, calendarId2, eventData) {
   const { idsOfDay } = calendarData;
-  const event = calendarData.events.find((item) => isSameEvent(item, eventId, calendarId));
+  const event = calendarData.events.find((item) => isSameEvent(item, eventId, calendarId2));
   if (!event) {
     return false;
   }
@@ -2370,14 +2369,6 @@ function clearEvents(calendarData) {
   calendarData.idsOfDay = {};
   calendarData.events.clear();
 }
-const initialCalendars = [
-  {
-    id: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
-    name: "PublicHolidays",
-    backgroundColor: "#f30b0b",
-    borderColor: "#f30b0b"
-  }
-];
 var byteToHex = [];
 for (var i$1 = 0; i$1 < 256; ++i$1) {
   byteToHex.push((i$1 + 256).toString(16).slice(1));
@@ -2417,10 +2408,20 @@ function v4(options, buf, offset) {
   }
   return unsafeStringify(rnds);
 }
+const calendarId = v4();
+const initialCalendars = [
+  {
+    id: calendarId,
+    name: "PublicHolidays",
+    backgroundColor: "#f30b0b",
+    borderColor: "#f30b0b"
+  }
+];
 const initialEvents = [
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-01-01T00:00:00",
@@ -2428,7 +2429,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-01-02T00:00:00",
@@ -2436,7 +2438,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-01-03T00:00:00",
@@ -2444,7 +2447,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-01-04T00:00:00",
@@ -2452,7 +2456,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-01-05T00:00:00",
@@ -2460,7 +2465,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-01-06T00:00:00",
@@ -2468,7 +2474,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u0420\u043E\u0436\u0434\u0435\u0441\u0442\u0432\u043E \u0425\u0440\u0438\u0441\u0442\u043E\u0432\u043E",
     category: "allday",
     start: "2024-01-07T00:00:00",
@@ -2476,7 +2483,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-01-08T00:00:00",
@@ -2484,7 +2492,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u0414\u0435\u043D\u044C \u0437\u0430\u0449\u0438\u0442\u043D\u0438\u043A\u0430 \u041E\u0442\u0435\u0447\u0435\u0441\u0442\u0432\u0430",
     category: "allday",
     start: "2024-02-23T00:00:00",
@@ -2492,7 +2501,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u044B\u0439 \u0436\u0435\u043D\u0441\u043A\u0438\u0439 \u0434\u0435\u043D\u044C",
     category: "allday",
     start: "2024-03-08T00:00:00",
@@ -2500,7 +2510,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041F\u0440\u0430\u0437\u0434\u043D\u0438\u043A \u0412\u0435\u0441\u043D\u044B \u0438 \u0422\u0440\u0443\u0434\u0430",
     category: "allday",
     start: "2024-05-01T00:00:00",
@@ -2508,7 +2519,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u0414\u0435\u043D\u044C \u041F\u043E\u0431\u0435\u0434\u044B",
     category: "allday",
     start: "2024-05-09T00:00:00",
@@ -2516,7 +2528,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u0414\u0435\u043D\u044C \u041F\u043E\u0431\u0435\u0434\u044B",
     category: "allday",
     start: "2024-05-10T00:00:00",
@@ -2524,7 +2537,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u0414\u0435\u043D\u044C \u0420\u043E\u0441\u0441\u0438\u0438",
     category: "allday",
     start: "2024-06-12T00:00:00",
@@ -2532,7 +2546,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u0414\u0435\u043D\u044C \u043D\u0430\u0440\u043E\u0434\u043D\u043E\u0433\u043E \u0435\u0434\u0438\u043D\u0441\u0442\u0432\u0430",
     category: "allday",
     start: "2024-11-04T00:00:00",
@@ -2540,7 +2555,8 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-12-30T00:00:00",
@@ -2548,14 +2564,14 @@ const initialEvents = [
   },
   {
     id: v4(),
-    calendarId: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    calendarId,
+    isReadOnly: true,
     title: "\u041D\u043E\u0432\u043E\u0433\u043E\u0434\u043D\u0438\u0435 \u043A\u0430\u043D\u0438\u043A\u0443\u043B\u044B",
     category: "allday",
     start: "2024-12-31T00:00:00",
     end: "2024-12-31T23:59:00"
   }
 ];
-console.log(initialEvents);
 const eventModels = initialEvents.map((event) => new EventModel(event));
 function createCalendarSlice(calendars = []) {
   return {
@@ -2598,17 +2614,17 @@ function createCalendarDispatchers(set) {
         state.calendar.calendars = calendars;
       })
     ),
-    setCalendarColor: (calendarId, colorOptions) => set(
+    setCalendarColor: (calendarId2, colorOptions) => set(
       produce((state) => {
         const calendars = state.calendar.calendars.map((calendar) => {
-          if (calendar.id === calendarId) {
+          if (calendar.id === calendarId2) {
             return __spreadValues(__spreadValues({}, calendar), colorOptions);
           }
           return calendar;
         });
         const events = state.calendar.events.toArray().map((event) => {
           var _a, _b, _c, _d;
-          if (event.calendarId === calendarId) {
+          if (event.calendarId === calendarId2) {
             event.color = (_a = colorOptions.color) != null ? _a : event.color;
             event.backgroundColor = (_b = colorOptions.backgroundColor) != null ? _b : event.backgroundColor;
             event.borderColor = (_c = colorOptions.borderColor) != null ? _c : event.borderColor;
@@ -6002,11 +6018,11 @@ const DRAGGING_TYPE_CREATORS = {
   moveEvent: (area, id) => `event/${area}/move/${id}`,
   gridSelection: (type) => `gridSelection/${type}`
 };
-function useCalendarById(calendarId) {
+function useCalendarById(calendarId2) {
   return useStore(
     q$1(
-      (state) => state.calendar.calendars.find((cal) => cal.id === calendarId),
-      [calendarId]
+      (state) => state.calendar.calendars.find((cal) => cal.id === calendarId2),
+      [calendarId2]
     )
   );
 }
@@ -6230,9 +6246,9 @@ function getContainerStyle({
   return Object.assign(baseStyle, model.customStyle);
 }
 function getTestId({ model }) {
-  const calendarId = model.calendarId ? `${model.calendarId}-` : "";
+  const calendarId2 = model.calendarId ? `${model.calendarId}-` : "";
   const id = model.id ? `${model.id}-` : "";
-  return `${calendarId}${id}${model.title}`;
+  return `${calendarId2}${id}${model.title}`;
 }
 const classNames$k = {
   eventBody: cls("weekday-event"),
@@ -6258,7 +6274,7 @@ function HorizontalEvent({
   const calendarColor = useCalendarColor(uiModel.model);
   const [isDraggingTarget, setIsDraggingTarget] = h$2(false);
   const eventContainerRef = A$3(null);
-  const { isReadOnly, id, calendarId } = uiModel.model;
+  const { isReadOnly, id, calendarId: calendarId2 } = uiModel.model;
   const isDraggingGuideEvent = isPresent(resizingWidth) || isPresent(movingLeft);
   const isDraggableEvent2 = !isReadOnlyCalendar && !isReadOnly && !isDraggingGuideEvent;
   const startDragEvent = (className2) => {
@@ -6344,7 +6360,7 @@ function HorizontalEvent({
     }),
     style: containerStyle,
     "data-testid": passConditionalProp(isDraggableEvent2, getTestId(uiModel)),
-    "data-calendar-id": calendarId,
+    "data-calendar-id": calendarId2,
     "data-event-id": id,
     ref: eventContainerRef
   }, /* @__PURE__ */ _$3("div", {
@@ -6947,8 +6963,8 @@ const classNames$j = {
 };
 function EventDetailSectionDetail({ event }) {
   var _a, _b;
-  const { location: location2, recurrenceRule, attendees, state, calendarId, body } = event;
-  const calendar = useCalendarById(calendarId);
+  const { location: location2, recurrenceRule, attendees, state, calendarId: calendarId2, body } = event;
+  const calendar = useCalendarById(calendarId2);
   return /* @__PURE__ */ _$3("div", {
     className: classNames$j.sectionDetail
   }, location2 && /* @__PURE__ */ _$3("div", {
@@ -8225,7 +8241,7 @@ function TimeEvent({
   const eventContainerRef = A$3(null);
   const [isDraggingTarget, setIsDraggingTarget] = h$2(false);
   const { model, goingDurationHeight, modelDurationHeight, comingDurationHeight, croppedEnd } = uiModel;
-  const { id, calendarId, customStyle } = model;
+  const { id, calendarId: calendarId2, customStyle } = model;
   const hasNextStartTime = isPresent(nextStartTime);
   const { containerStyle, goingDurationStyle, modelDurationStyle, comingDurationStyle } = getStyles(
     { uiModel, isDraggingTarget, hasNextStartTime, calendarColor, minHeight }
@@ -8304,7 +8320,7 @@ function TimeEvent({
   const shouldShowResizeHandle = isDraggable && !croppedEnd;
   return /* @__PURE__ */ _$3("div", {
     "data-testid": `${isGuide ? "guide-" : ""}time-event-${model.title}-${uiModel.cid()}`,
-    "data-calendar-id": calendarId,
+    "data-calendar-id": calendarId2,
     "data-event-id": id,
     className: classNames$5.time,
     style: __spreadValues(__spreadValues({}, containerStyle), customStyle),
@@ -11305,33 +11321,33 @@ class CalendarCore {
     const { createEvents: createEvents2 } = this.getStoreDispatchers("calendar");
     createEvents2(events);
   }
-  getEventModel(eventId, calendarId) {
+  getEventModel(eventId, calendarId2) {
     const { events } = this.getStoreState("calendar");
     return events.find(
-      ({ id, calendarId: eventCalendarId }) => id === eventId && eventCalendarId === calendarId
+      ({ id, calendarId: eventCalendarId }) => id === eventId && eventCalendarId === calendarId2
     );
   }
-  getEvent(eventId, calendarId) {
+  getEvent(eventId, calendarId2) {
     var _a, _b;
-    return (_b = (_a = this.getEventModel(eventId, calendarId)) == null ? void 0 : _a.toEventObject()) != null ? _b : null;
+    return (_b = (_a = this.getEventModel(eventId, calendarId2)) == null ? void 0 : _a.toEventObject()) != null ? _b : null;
   }
-  updateEvent(eventId, calendarId, changes) {
+  updateEvent(eventId, calendarId2, changes) {
     const { updateEvent: updateEvent2 } = this.getStoreDispatchers("calendar");
-    const event = this.getEventModel(eventId, calendarId);
+    const event = this.getEventModel(eventId, calendarId2);
     if (event) {
       updateEvent2({ event, eventData: changes });
     }
   }
-  deleteEvent(eventId, calendarId) {
+  deleteEvent(eventId, calendarId2) {
     const { deleteEvent: deleteEvent2 } = this.getStoreDispatchers("calendar");
-    const event = this.getEventModel(eventId, calendarId);
+    const event = this.getEventModel(eventId, calendarId2);
     if (event) {
       deleteEvent2(event);
     }
   }
-  setCalendarVisibility(calendarId, isVisible) {
+  setCalendarVisibility(calendarId2, isVisible) {
     const { setCalendarVisibility } = this.getStoreDispatchers("calendar");
-    const calendarIds = Array.isArray(calendarId) ? calendarId : [calendarId];
+    const calendarIds = Array.isArray(calendarId2) ? calendarId2 : [calendarId2];
     setCalendarVisibility(calendarIds, isVisible);
   }
   render() {
@@ -11403,20 +11419,20 @@ class CalendarCore {
   prev() {
     this.move(-1);
   }
-  setCalendarColor(calendarId, colorOptions) {
+  setCalendarColor(calendarId2, colorOptions) {
     const { setCalendarColor } = this.getStoreDispatchers().calendar;
-    setCalendarColor(calendarId, colorOptions);
+    setCalendarColor(calendarId2, colorOptions);
   }
   changeView(viewName) {
     const { changeView } = this.getStoreDispatchers("view");
     changeView(viewName);
     this.renderRange = this.calculateRenderRange(this.getDate());
   }
-  getElement(eventId, calendarId) {
-    const event = this.getEvent(eventId, calendarId);
+  getElement(eventId, calendarId2) {
+    const event = this.getEvent(eventId, calendarId2);
     if (event && this.container) {
       return this.container.querySelector(
-        `[data-event-id="${eventId}"][data-calendar-id="${calendarId}"]`
+        `[data-event-id="${eventId}"][data-calendar-id="${calendarId2}"]`
       );
     }
     return null;

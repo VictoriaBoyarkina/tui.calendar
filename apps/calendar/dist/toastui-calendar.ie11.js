@@ -14556,7 +14556,6 @@ function createEventCollection() {
   var collection = new Collection(function (event) {
     return event.cid();
   });
-  console.log(collection);
   if (arguments.length) {
     collection.add.apply(collection, arguments);
   }
@@ -14715,14 +14714,6 @@ function findByDateRange(calendarData, condition) {
   });
   return result;
 }
-;// CONCATENATED MODULE: ./src/constants/initialCalendar.ts
-var initialCalendars = [{
-  id: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
-  name: 'PublicHolidays',
-  backgroundColor: '#f30b0b',
-  borderColor: '#f30b0b'
-}];
-/* harmony default export */ var initialCalendar = (initialCalendars);
 ;// CONCATENATED MODULE: ../../node_modules/uuid/dist/esm-browser/native.js
 var randomUUID = typeof crypto !== 'undefined' && crypto.randomUUID && crypto.randomUUID.bind(crypto);
 /* harmony default export */ var esm_browser_native = ({
@@ -14804,131 +14795,161 @@ function v4(options, buf, offset) {
   return unsafeStringify(rnds);
 }
 /* harmony default export */ var esm_browser_v4 = (v4);
+;// CONCATENATED MODULE: ./src/constants/calendarId.ts
+
+var calendarId = esm_browser_v4();
+/* harmony default export */ var constants_calendarId = (calendarId);
+;// CONCATENATED MODULE: ./src/constants/initialCalendar.ts
+
+var initialCalendars = [{
+  id: constants_calendarId,
+  name: 'PublicHolidays',
+  backgroundColor: '#f30b0b',
+  borderColor: '#f30b0b'
+}];
+/* harmony default export */ var initialCalendar = (initialCalendars);
 ;// CONCATENATED MODULE: ./src/constants/initialEvents.ts
+
 
 
 
 var initialEvents = [{
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-01-01T00:00:00',
   end: '2024-01-01T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-01-02T00:00:00',
   end: '2024-01-02T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-01-03T00:00:00',
   end: '2024-01-03T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-01-04T00:00:00',
   end: '2024-01-04T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-01-05T00:00:00',
   end: '2024-01-05T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-01-06T00:00:00',
   end: '2024-01-06T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Рождество Христово',
   category: 'allday',
   start: '2024-01-07T00:00:00',
   end: '2024-01-07T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-01-08T00:00:00',
   end: '2024-01-08T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'День защитника Отечества',
   category: 'allday',
   start: '2024-02-23T00:00:00',
   end: '2024-02-23T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Международный женский день',
   category: 'allday',
   start: '2024-03-08T00:00:00',
   end: '2024-03-08T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Праздник Весны и Труда',
   category: 'allday',
   start: '2024-05-01T00:00:00',
   end: '2024-05-01T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'День Победы',
   category: 'allday',
   start: '2024-05-09T00:00:00',
   end: '2024-05-09T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'День Победы',
   category: 'allday',
   start: '2024-05-10T00:00:00',
   end: '2024-05-10T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'День России',
   category: 'allday',
   start: '2024-06-12T00:00:00',
   end: '2024-06-12T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'День народного единства',
   category: 'allday',
   start: '2024-11-04T00:00:00',
   end: '2024-11-04T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-12-30T00:00:00',
   end: '2024-12-30T23:59:00'
 }, {
   id: esm_browser_v4(),
-  calendarId: '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d',
+  calendarId: constants_calendarId,
+  isReadOnly: true,
   title: 'Новогодние каникулы',
   category: 'allday',
   start: '2024-12-31T00:00:00',
   end: '2024-12-31T23:59:00'
 }];
-console.log(initialEvents);
 var eventModels = initialEvents.map(function (event) {
   return new EventModel(event);
 });
