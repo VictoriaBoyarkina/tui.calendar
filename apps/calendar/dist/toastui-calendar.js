@@ -4410,8 +4410,8 @@ function min(d1, d2) {
   return compare(d1, d2) === -1 ? d1 : d2;
 }
 function isNotHolyday(d1, daysList) {
-  console.log(d1);
-  return daysList.includes(d1);
+  const date = `${d1.getDate()}.${d1.getMonth()}.${d1.getFullYear()}`;
+  return daysList.includes(date);
 }
 
 /**
@@ -5577,6 +5577,22 @@ const initialEvents = [{
   category: 'allday',
   start: '2024-03-08T00:00:00',
   end: '2024-03-08T23:59:00'
+}, {
+  id: esm_browser_v4(),
+  calendarId: constants_calendarId,
+  isReadOnly: true,
+  title: 'Праздник Весны и Труда',
+  category: 'allday',
+  start: '2024-04-29T00:00:00',
+  end: '2024-04-29T23:59:00'
+}, {
+  id: esm_browser_v4(),
+  calendarId: constants_calendarId,
+  isReadOnly: true,
+  title: 'Праздник Весны и Труда',
+  category: 'allday',
+  start: '2024-04-30T00:00:00',
+  end: '2024-04-30T23:59:00'
 }, {
   id: esm_browser_v4(),
   calendarId: constants_calendarId,
@@ -6803,7 +6819,7 @@ function usePrimaryTimezone() {
   return [primaryTimezoneName, getNow];
 }
 ;// CONCATENATED MODULE: ./src/constants/workingDaysList.ts
-const workingDaysList = [];
+const workingDaysList = ['27.04.2024', '2.04.2024', '28.12.2024'];
 /* harmony default export */ var constants_workingDaysList = (workingDaysList);
 ;// CONCATENATED MODULE: ./src/components/dayGridCommon/dayName.tsx
 
@@ -6827,7 +6843,6 @@ function getWeekDayNameColor(_ref) {
     day,
     dateInstance
   } = dayName;
-  console.log(dayName);
   const isToday = isSameDate(today, dateInstance);
   const isPastDay = !isToday && dateInstance < today;
   const isWeekday = isNotHolyday(dateInstance, constants_workingDaysList);

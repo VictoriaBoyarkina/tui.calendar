@@ -13559,8 +13559,8 @@ function min(d1, d2) {
   return compare(d1, d2) === -1 ? d1 : d2;
 }
 function isNotHolyday(d1, daysList) {
-  console.log(d1);
-  return daysList.includes(d1);
+  var date = "".concat(d1.getDate(), ".").concat(d1.getMonth(), ".").concat(d1.getFullYear());
+  return daysList.includes(date);
 }
 
 /**
@@ -14899,6 +14899,22 @@ var initialEvents = [{
   category: 'allday',
   start: '2024-03-08T00:00:00',
   end: '2024-03-08T23:59:00'
+}, {
+  id: esm_browser_v4(),
+  calendarId: constants_calendarId,
+  isReadOnly: true,
+  title: 'Праздник Весны и Труда',
+  category: 'allday',
+  start: '2024-04-29T00:00:00',
+  end: '2024-04-29T23:59:00'
+}, {
+  id: esm_browser_v4(),
+  calendarId: constants_calendarId,
+  isReadOnly: true,
+  title: 'Праздник Весны и Труда',
+  category: 'allday',
+  start: '2024-04-30T00:00:00',
+  end: '2024-04-30T23:59:00'
 }, {
   id: esm_browser_v4(),
   calendarId: constants_calendarId,
@@ -16360,7 +16376,7 @@ function usePrimaryTimezone() {
   return [primaryTimezoneName, getNow];
 }
 ;// CONCATENATED MODULE: ./src/constants/workingDaysList.ts
-var workingDaysList = [];
+var workingDaysList = ['27.04.2024', '2.04.2024', '28.12.2024'];
 /* harmony default export */ var constants_workingDaysList = (workingDaysList);
 ;// CONCATENATED MODULE: ./src/components/dayGridCommon/dayName.tsx
 function dayName_typeof(o) { "@babel/helpers - typeof"; return dayName_typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, dayName_typeof(o); }
@@ -16408,7 +16424,6 @@ function getWeekDayNameColor(_ref) {
     today = _ref.today;
   var day = dayName.day,
     dateInstance = dayName.dateInstance;
-  console.log(dayName);
   var isToday = isSameDate(today, dateInstance);
   var isPastDay = !isToday && dateInstance < today;
   var isWeekday = isNotHolyday(dateInstance, constants_workingDaysList);

@@ -1749,8 +1749,8 @@ function min(d1, d2) {
   return compare(d1, d2) === -1 ? d1 : d2;
 }
 function isNotHolyday(d1, daysList) {
-  console.log(d1);
-  return daysList.includes(d1);
+  const date2 = `${d1.getDate()}.${d1.getMonth()}.${d1.getFullYear()}`;
+  return daysList.includes(date2);
 }
 function parse(str, fixMonth = -1) {
   const matches = str.match(dateFormatRx);
@@ -2511,6 +2511,24 @@ const initialEvents = [
     category: "allday",
     start: "2024-03-08T00:00:00",
     end: "2024-03-08T23:59:00"
+  },
+  {
+    id: v4(),
+    calendarId,
+    isReadOnly: true,
+    title: "\u041F\u0440\u0430\u0437\u0434\u043D\u0438\u043A \u0412\u0435\u0441\u043D\u044B \u0438 \u0422\u0440\u0443\u0434\u0430",
+    category: "allday",
+    start: "2024-04-29T00:00:00",
+    end: "2024-04-29T23:59:00"
+  },
+  {
+    id: v4(),
+    calendarId,
+    isReadOnly: true,
+    title: "\u041F\u0440\u0430\u0437\u0434\u043D\u0438\u043A \u0412\u0435\u0441\u043D\u044B \u0438 \u0422\u0440\u0443\u0434\u0430",
+    category: "allday",
+    start: "2024-04-30T00:00:00",
+    end: "2024-04-30T23:59:00"
   },
   {
     id: v4(),
@@ -4524,7 +4542,7 @@ function usePrimaryTimezone() {
   );
   return [primaryTimezoneName, getNow];
 }
-const workingDaysList = [];
+const workingDaysList = ["27.04.2024", "2.04.2024", "28.12.2024"];
 function isWeekDayName(type, dayName) {
   return type === "week";
 }
@@ -4535,7 +4553,6 @@ function getWeekDayNameColor({
 }) {
   var _a, _b;
   const { day, dateInstance } = dayName;
-  console.log(dayName);
   const isToday = isSameDate(today, dateInstance);
   const isPastDay = !isToday && dateInstance < today;
   const isWeekday = isNotHolyday(dateInstance, workingDaysList);

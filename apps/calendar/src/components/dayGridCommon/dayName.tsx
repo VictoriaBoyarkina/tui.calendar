@@ -38,7 +38,6 @@ function getWeekDayNameColor({
   today: TZDate;
 }) {
   const { day, dateInstance } = dayName;
-  console.log(dayName);
   const isToday = isSameDate(today, dateInstance);
   const isPastDay = !isToday && dateInstance < today;
   const isWeekday = isNotHolyday(dateInstance, workingDaysList);

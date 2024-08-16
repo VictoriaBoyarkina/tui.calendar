@@ -15074,8 +15074,8 @@ var __publicField = (obj, key, value) => {
             return compare(d1, d2) === -1 ? d1 : d2;
           }
           function isNotHolyday(d1, daysList) {
-            console.log(d1);
-            return daysList.includes(d1);
+            var date2 = "".concat(d1.getDate(), ".").concat(d1.getMonth(), ".").concat(d1.getFullYear());
+            return daysList.includes(date2);
           }
           function parse(str) {
             var fixMonth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : -1;
@@ -16059,6 +16059,22 @@ var __publicField = (obj, key, value) => {
             category: "allday",
             start: "2024-03-08T00:00:00",
             end: "2024-03-08T23:59:00"
+          }, {
+            id: esm_browser_v4(),
+            calendarId: constants_calendarId,
+            isReadOnly: true,
+            title: "\u041F\u0440\u0430\u0437\u0434\u043D\u0438\u043A \u0412\u0435\u0441\u043D\u044B \u0438 \u0422\u0440\u0443\u0434\u0430",
+            category: "allday",
+            start: "2024-04-29T00:00:00",
+            end: "2024-04-29T23:59:00"
+          }, {
+            id: esm_browser_v4(),
+            calendarId: constants_calendarId,
+            isReadOnly: true,
+            title: "\u041F\u0440\u0430\u0437\u0434\u043D\u0438\u043A \u0412\u0435\u0441\u043D\u044B \u0438 \u0422\u0440\u0443\u0434\u0430",
+            category: "allday",
+            start: "2024-04-30T00:00:00",
+            end: "2024-04-30T23:59:00"
           }, {
             id: esm_browser_v4(),
             calendarId: constants_calendarId,
@@ -17509,7 +17525,7 @@ var __publicField = (obj, key, value) => {
             }, [primaryTimezoneName, tzConverter]);
             return [primaryTimezoneName, getNow];
           }
-          var workingDaysList = [];
+          var workingDaysList = ["27.04.2024", "2.04.2024", "28.12.2024"];
           var constants_workingDaysList = workingDaysList;
           function dayName_typeof(o2) {
             "@babel/helpers - typeof";
@@ -17594,7 +17610,6 @@ var __publicField = (obj, key, value) => {
           function getWeekDayNameColor(_ref) {
             var dayName = _ref.dayName, theme = _ref.theme, today = _ref.today;
             var day = dayName.day, dateInstance = dayName.dateInstance;
-            console.log(dayName);
             var isToday = isSameDate(today, dateInstance);
             var isPastDay = !isToday && dateInstance < today;
             var isWeekday = isNotHolyday(dateInstance, constants_workingDaysList);
